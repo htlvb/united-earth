@@ -1,4 +1,5 @@
 <script lang="ts">
+  import '../app.css';
   import { onMount } from 'svelte';
   import { setupI18n, RTL_LOCALES } from '$lib/i18n';
   import { locale, isLoading } from 'svelte-i18n';

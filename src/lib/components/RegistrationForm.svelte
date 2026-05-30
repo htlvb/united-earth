@@ -69,11 +69,12 @@
 </script>
 
 {#if success}
-  <div class="success-box">
+  <div class="rounded bg-[#5e42a6] px-6 py-4 my-4 text-white">
     <p>{$_('mes_email_sent')}</p>
   </div>
 {:else}
   <form onsubmit={(e) => { e.preventDefault(); submit(); }}>
+
     <!-- Person / Organization toggle -->
     <div id="segemented-controll-people-organization">
       <input id="rad1" type="radio" name="radioBtn" bind:group={accountType} value="p" />
@@ -82,23 +83,21 @@
       <label class="labels" for="rad2">{$_('all_organizations')}</label>
     </div>
 
-    <p id="account-type-label">
+    <p id="account-type-label" class="my-1">
       {accountType === 'p' ? $_('person') : $_('organization')}
     </p>
 
     {#if accountType === 'o'}
-      <p style="font-size:0.85em;">{$_('included_organizations')}</p>
+      <p class="text-sm mb-2">{$_('included_organizations')}</p>
     {/if}
 
     <div class="fields">
-      <!-- Designation -->
       <div class="field half">
         <label for="designation">Designation</label>
         <input id="designation" type="text" bind:value={designation} placeholder="e.g. Climate activist" />
       </div>
 
       {#if accountType === 'p'}
-        <!-- First / Last name -->
         <div class="field half">
           <label for="firstName">{$_('first_name')}</label>
           <input id="firstName" type="text" bind:value={firstName} />
@@ -108,7 +107,6 @@
           <input id="lastName" type="text" bind:value={lastName} />
         </div>
       {:else}
-        <!-- Organization name + website -->
         <div class="field half">
           <label for="organization">{$_('company_organization_name')}</label>
           <input id="organization" type="text" bind:value={organization} />
@@ -119,7 +117,6 @@
         </div>
       {/if}
 
-      <!-- Country -->
       <div class="field half">
         <label for="country">{$_('country')}</label>
         <select id="country" bind:value={country}>
@@ -130,26 +127,22 @@
         </select>
       </div>
 
-      <!-- Email -->
       <div class="field half">
         <label for="email">{$_('email')}</label>
         <input id="email" type="email" bind:value={email} />
       </div>
     </div>
 
-    <!-- Newsletter -->
     <div class="field">
       <input id="email_newsletter" type="checkbox" bind:checked={newsletter} />
       <label for="email_newsletter">{$_('email_newsletter')}</label>
     </div>
 
-    <!-- Age consent -->
     <div class="field">
       <input id="old_enough" type="checkbox" bind:checked={oldEnough} />
       <label for="old_enough">{$_('old_enough')}</label>
     </div>
 
-    <!-- Privacy policy -->
     <div class="field">
       <input id="privacy_policy" type="checkbox" bind:checked={privacyAccepted} />
       <label for="privacy_policy">
@@ -159,7 +152,7 @@
     </div>
 
     {#if formError}
-      <p class="form-error">{formError}</p>
+      <p class="my-2 text-red-400">{formError}</p>
     {/if}
 
     <ul class="actions">
@@ -173,15 +166,33 @@
 {/if}
 
 <style>
-  .success-box {
-    background: #5e42a6;
-    color: white;
-    padding: 1em 1.5em;
-    border-radius: 4px;
-    margin: 1em 0;
+  /* Segmented control — CSS sibling selector logic can't be expressed in Tailwind */
+  #segemented-controll-people-organization {
+    position: relative;
+    display: flex;
+    background-color: #b74e91;
+    z-index: 5;
+    width: 100%;
+    border-radius: 5px;
+    margin-bottom: 5px;
   }
-  .form-error {
-    color: #c0392b;
-    margin: 0.5em 0;
+  input[type="radio"] { display: none; }
+  .labels {
+    width: 50%;
+    text-align: center;
+    padding: 10px 0;
+    margin-bottom: 0;
+    z-index: 2;
+    cursor: pointer;
+    border-radius: 5px;
   }
+  #bckgrnd {
+    background-color: #e06ab5;
+    position: absolute;
+    left: 0; top: 0;
+    width: 50%; height: 100%;
+    z-index: -1;
+  }
+  #rad1:checked ~ #bckgrnd { transform: translateX(0); transition: transform 0.5s ease-in-out; }
+  #rad2:checked ~ #bckgrnd { transform: translateX(100%); transition: transform 0.5s ease-in-out; }
 </style>

@@ -9,16 +9,16 @@
   );
 </script>
 
-<div id="flagsBorder">
-  <p style="margin-left:5px; display:inline;">{$_('members')}</p>
-  <p style="display:inline;" id="counter">{counts.total}</p>
-  <div id="flags">
+<div id="flagsBorder" class="overflow-hidden border border-blue-500 rounded my-2.5">
+  <p class="ml-1.5 inline">{$_('members')}</p>
+  <p class="inline" id="counter">{counts.total}</p>
+  <div id="flags" class="flex h-48 overflow-y-scroll flex-wrap">
     {#each sorted as [code, count]}
       <span title="{code.toUpperCase()}: {count}">
         <img
           src="/flags/{code.toUpperCase()}.png"
           alt={code}
-          style="width:24px; height:16px; margin:2px;"
+          class="h-12 m-2"
           onerror={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; }}
         />
       </span>

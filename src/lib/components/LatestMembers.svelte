@@ -4,24 +4,16 @@
   let { members }: { members: LatestMember[] } = $props();
 </script>
 
-<div id="latest_members">
+<div id="latest_members" class="flex flex-wrap gap-2.5 mb-2.5">
   {#each members as member}
-    <div class="latest-member">
+    <div class="flex items-center gap-1.5">
       <img
         src="/flags/{member.country.toUpperCase()}.png"
         alt={member.country}
-        style="width:20px; height:13px; vertical-align:middle; margin-right:6px;"
+        class="h-4"
         onerror={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; }}
       />
       <span>{member.designation}</span>
     </div>
   {/each}
 </div>
-
-<style>
-  .latest-member {
-    display: flex;
-    align-items: center;
-    margin: 4px 0;
-  }
-</style>

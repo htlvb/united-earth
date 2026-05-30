@@ -28,7 +28,7 @@
 
   <!-- Privacy notice -->
   <section>
-    <p style="text-align:center; margin-bottom:0;">
+    <p class="text-center !mb-0">
       By continuing you accept the
       <a href="/privacy_policies" target="_blank">{$_('privacy_policy_0')}</a>
       of United-Earth2026
@@ -38,49 +38,44 @@
   <!-- Welcome -->
   <section id="welcome" class="wrapper style1 fullscreen fade-up">
     <div class="inner">
-      <div id="lang_selection">
+      <div id="lang_selection" class="mb-4">
         <LanguageSwitcher />
       </div>
 
-      <div id="title-and-logo">
-        <div id="version-large" class="title-and-logo">
-          <img class="logo" src="/umweltabzeichen.png" alt="Logo" />
-          <h1 id="title">United-Earth2026</h1>
-          <img class="logo" src="/Logo.png" alt="Logo" />
-        </div>
-        <div id="version-small" class="title-and-logo">
-          <h1 id="title">United-Earth2026</h1>
-          <div id="logos">
-            <img class="logo" src="/umweltabzeichen.png" alt="Logo" />
-            <img class="logo" src="/Logo.png" alt="Logo" />
-          </div>
-        </div>
+      <!-- Large screen: logos left and right of title -->
+      <div class="hidden md:flex flex-row items-center my-5">
+        <img class="flex-1 max-h-36 object-contain" src="/umweltabzeichen.png" alt="Logo" />
+        <h1 class="grow-[5] text-center m-0">United-Earth2026</h1>
+        <img class="flex-1 max-h-36 object-contain" src="/Logo.png" alt="Logo" />
+      </div>
 
-        <div id="united-earth-is-text">
-          <p style="font-size:1em;">{$_('united_earth_is_1')}</p>
-          <h2 style="margin-bottom:0">{$_('united_earth_is_2')}</h2>
-          <p style="margin-bottom:0;font-size:1em;">{$_('united_earth_is_3')}</p>
-          <p style="font-size:1em;">{$_('united_earth_is_4')}</p>
-          <p style="font-size:1em;">{$_('united_earth_is_5')}</p>
-          <h2 style="margin-bottom:0">{$_('united_earth_is_6')}</h2>
-          <p style="margin-bottom:0;font-size:1em;">{$_('united_earth_is_7')}</p>
-          <p style="font-size:1em;">{$_('united_earth_is_8')}</p>
-
-          <div class="container">
-            <a style="margin-bottom:10px;display:block;" class="button_theme half" href="#becomeAMember">
-              {$_('get_involved_people')}
-            </a>
-            <a style="margin-bottom:10px;display:block;" class="button_theme half" href="#becomeAMember">
-              {$_('get_involved_organizations')}
-            </a>
-          </div>
-
-          <h3>Latest members</h3>
-          <LatestMembers members={data.latest} />
-
-          <MemberCounter counts={data.counts} />
+      <!-- Small screen: title on top, logos side by side below -->
+      <div class="flex md:hidden flex-col items-center my-5">
+        <h1 class="text-center m-0">United-Earth2026</h1>
+        <div class="flex flex-row justify-center items-center">
+          <img class="w-[55%]" src="/umweltabzeichen.png" alt="Logo" />
+          <img class="w-[35%]" src="/Logo.png" alt="Logo" />
         </div>
       </div>
+
+      <p class="text-base">{$_('united_earth_is_1')}</p>
+      <h2 class="mb-0">{$_('united_earth_is_2')}</h2>
+      <p class="mb-0 text-base">{$_('united_earth_is_3')}</p>
+      <p class="text-base">{$_('united_earth_is_4')}</p>
+      <p class="text-base">{$_('united_earth_is_5')}</p>
+      <h2 class="mb-0">{$_('united_earth_is_6')}</h2>
+      <p class="mb-0 text-base">{$_('united_earth_is_7')}</p>
+      <p class="text-base">{$_('united_earth_is_8')}</p>
+
+      <div class="flex flex-wrap gap-2 my-2">
+        <a class="button_theme half flex-1 block mb-2" href="#becomeAMember">{$_('get_involved_people')}</a>
+        <a class="button_theme half flex-1 block mb-2" href="#becomeAMember">{$_('get_involved_organizations')}</a>
+      </div>
+
+      <h3>Latest members</h3>
+      <LatestMembers members={data.latest} />
+
+      <MemberCounter counts={data.counts} />
     </div>
   </section>
 
@@ -88,18 +83,18 @@
   <section id="weSaveOurPlanet" class="wrapper style3 fade-up">
     <div class="inner">
       <section id="whatDoWeStandFor">
-        <h2>{$_('tab2')}</h2>
-        <p>{$_('about_us_2')}</p>
-        <p>{$_('about_us_3')}</p>
-        <p>{$_('about_us_4')}</p>
-        <p>{$_('about_us_5')}</p>
+        <h2 class="ml-[2%] mt-[35px]">{$_('tab2')}</h2>
+        <p class="ml-[8%] mb-0">{$_('about_us_2')}</p>
+        <p class="ml-[8%] mb-0">{$_('about_us_3')}</p>
+        <p class="ml-[8%] mb-0">{$_('about_us_4')}</p>
+        <p class="ml-[8%] mb-0">{$_('about_us_5')}</p>
       </section>
 
       <section id="whatIsNecessary">
-        <h2>{$_('tab3')}</h2>
-        <p>{$_('about_us_6')}</p>
-        <p><strong>{$_('about_us_7')}</strong></p>
-        <ul class="actions" style="margin-top:1em;">
+        <h2 class="ml-[2%] mt-[35px]">{$_('tab3')}</h2>
+        <p class="ml-[8%] mb-0">{$_('about_us_6')}</p>
+        <p class="ml-[8%] mb-0"><strong>{$_('about_us_7')}</strong></p>
+        <ul class="actions mt-4">
           <li><a href="/current_status_climate" class="button_theme">{$_('current_status_climate')}</a></li>
           <li><a href="/action_plan" class="button_theme">{$_('action_plan')}</a></li>
         </ul>
@@ -115,13 +110,13 @@
       <p>{$_('error_free')}</p>
 
       {#if data.success}
-        <div style="background:#5e42a6;color:white;padding:1em;border-radius:4px;margin-bottom:1em;">
+        <div class="rounded bg-[#5e42a6] px-4 py-3 mb-4 text-white">
           {$_('mes_email_sent')}
         </div>
       {/if}
 
       {#if data.error === 'invalid_token'}
-        <div style="background:#c0392b;color:white;padding:1em;border-radius:4px;margin-bottom:1em;">
+        <div class="rounded bg-red-700 px-4 py-3 mb-4 text-white">
           Verification link is invalid or has expired.
         </div>
       {/if}

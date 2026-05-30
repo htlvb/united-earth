@@ -61,18 +61,25 @@
   }
 </script>
 
-<div class="lang-switcher">
-  <button class="lang-toggle" onclick={() => open = !open} aria-expanded={open}>
-    <span>{current.name}</span>
-    <span class="chevron" class:rotated={open}>▾</span>
+<div class="relative block">
+  <button
+    class="flex w-full items-center gap-1.5 cursor-pointer rounded border border-white/30 bg-white/10 px-3 py-1.5 text-sm text-inherit hover:bg-white/20"
+    onclick={() => open = !open}
+    aria-expanded={open}
+  >
+    <span class="flex-1 text-left">{current.name}</span>
+    <span class="transition-transform duration-200 {open ? 'rotate-180' : ''}">▾</span>
   </button>
 
   {#if open}
-    <div class="lang-grid" transition:slide={{ duration: 250 }}>
+    <div
+      class="absolute top-full left-0 right-0 z-50 mt-0 grid gap-0.5 rounded border border-white/20 bg-[#1a1a2e] p-1.5 shadow-xl"
+      style="grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));"
+      transition:slide={{ duration: 250 }}
+    >
       {#each LANGS as lang}
         <button
-          class="lang-item"
-          class:active={lang.code === $locale}
+          class="cursor-pointer rounded border-none bg-transparent px-2 py-1 text-left text-xs whitespace-nowrap text-white/80 hover:bg-white/10 hover:text-white {lang.code === $locale ? 'bg-white/15 font-semibold text-white' : ''}"
           onclick={() => select(lang.code)}
         >
           {lang.name}
@@ -81,78 +88,3 @@
     </div>
   {/if}
 </div>
-
-<style>
-  .lang-switcher {
-    display: block;
-    position: relative;
-  }
-
-  .lang-toggle {
-    display: flex;
-    width: 100%;
-    align-items: center;
-    gap: 0.4em;
-    background: rgba(255 255 255 / 0.1);
-    border: 1px solid rgba(255 255 255 / 0.3);
-    color: inherit;
-    padding: 0.35em 0.75em;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 0.9em;
-    box-sizing: border-box;
-  }
-
-  .lang-toggle:hover {
-    background: rgba(255 255 255 / 0.2);
-  }
-
-  .chevron {
-    display: inline-block;
-    transition: transform 0.2s ease;
-    font-style: normal;
-  }
-
-  .chevron.rotated {
-    transform: rotate(180deg);
-  }
-
-  .lang-grid {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    z-index: 100;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-    gap: 2px;
-    padding: 6px;
-    background: #1a1a2e;
-    border: 1px solid rgba(255 255 255 / 0.2);
-    border-radius: 4px;
-    box-shadow: 0 4px 16px rgba(0 0 0 / 0.4);
-  }
-
-  .lang-item {
-    background: none;
-    border: none;
-    color: rgba(255 255 255 / 0.8);
-    padding: 0.3em 0.5em;
-    border-radius: 3px;
-    cursor: pointer;
-    font-size: 0.82em;
-    text-align: left;
-    white-space: nowrap;
-  }
-
-  .lang-item:hover {
-    background: rgba(255 255 255 / 0.1);
-    color: #fff;
-  }
-
-  .lang-item.active {
-    background: rgba(255 255 255 / 0.15);
-    color: #fff;
-    font-weight: 600;
-  }
-</style>
