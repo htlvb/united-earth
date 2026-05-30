@@ -13,7 +13,7 @@
         class="h-4"
         onerror={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; }}
       />
-      <span>{member.designation}</span>
+      <span>{member.name}</span>
     </div>
   {/each}
 </div>

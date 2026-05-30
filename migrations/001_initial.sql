@@ -3,7 +3,6 @@ CREATE EXTENSION IF NOT EXISTS "pgcrypto";
 CREATE TABLE supporters (
   id           UUID        PRIMARY KEY DEFAULT gen_random_uuid(),
   type         CHAR(1)     NOT NULL CHECK (type IN ('p', 'o')),
-  designation  VARCHAR(100) NOT NULL,
   first_name   VARCHAR(100),
   last_name    VARCHAR(100),
   organization VARCHAR(200),

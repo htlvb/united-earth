@@ -1,5 +1,5 @@
 import { getDb } from './db';
-import type { RegistrationData } from '$lib/types';
+import type { LatestMember, RegistrationData } from '$lib/types';
 
 export async function getMemberCounts(): Promise<{ total: number; byCountry: Record<string, number> }> {
 	const sql = getDb();
@@ -15,10 +15,15 @@ export async function getMemberCounts(): Promise<{ total: number; byCountry: Rec
 	return { total, byCountry };
 }
 
-export async function getLatestMembers(limit = 12): Promise<{ designation: string; country: string }[]> {
+export async function getLatestMembers(limit = 12): Promise<LatestMember[]> {
 	const sql = getDb();
-	const rows = await sql<{ designation: string; country: string }[]>`
-		SELECT designation, country FROM supporters ORDER BY verified_at DESC LIMIT ${limit}
+	const rows = await sql<{ name: string; country: string }[]>`
+		SELECT
+			COALESCE(first_name || ' ' || last_name, organization) AS name,
+			country
+		FROM supporters
+		ORDER BY verified_at DESC
+		LIMIT ${limit}
 	`;
 	return rows;
 }
@@ -42,9 +47,9 @@ export async function confirmRegistration(token: string): Promise<RegistrationDa
 	const data = rows[0].data;
 
 	await sql`
-		INSERT INTO supporters (type, designation, first_name, last_name, organization, website, country, language, email, newsletter)
+		INSERT INTO supporters (type, first_name, last_name, organization, website, country, language, email, newsletter)
 		VALUES (
-			${data.type}, ${data.designation},
+			${data.type},
 			${data.firstName ?? null}, ${data.lastName ?? null},
 			${data.organization ?? null}, ${data.website ?? null},
 			${data.country}, ${data.language}, ${data.email}, ${data.newsletter}

@@ -10,10 +10,9 @@ export const POST: RequestHandler = async ({ request }) => {
 	const body = await request.json().catch(() => null);
 	if (!body) throw error(400, 'Invalid JSON');
 
-	const { type, designation, firstName, lastName, organization, website, country, language, email, newsletter } = body;
+	const { type, firstName, lastName, organization, website, country, language, email, newsletter } = body;
 
 	if (!type || !['p', 'o'].includes(type)) throw error(400, 'Invalid type');
-	if (!designation?.trim()) throw error(400, 'Designation is required');
 	if (!country?.trim() || country.length > 3) throw error(400, 'Invalid country');
 	if (!email?.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) throw error(400, 'Invalid email');
 	if (type === 'p' && (!firstName?.trim() || !lastName?.trim())) throw error(400, 'First and last name required');
@@ -25,7 +24,6 @@ export const POST: RequestHandler = async ({ request }) => {
 
 	const data: RegistrationData = {
 		type,
-		designation: designation.trim(),
 		firstName: firstName?.trim() || undefined,
 		lastName: lastName?.trim() || undefined,
 		organization: organization?.trim() || undefined,

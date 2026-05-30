@@ -1,6 +1,5 @@
 export interface RegistrationData {
 	type: 'p' | 'o';
-	designation: string;
 	firstName?: string;
 	lastName?: string;
 	organization?: string;
@@ -17,6 +16,6 @@ export interface MemberCounts {
 }
 
 export interface LatestMember {
-	designation: string;
+	name: string;
 	country: string;
 }

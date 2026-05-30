@@ -4,7 +4,6 @@
   import { COUNTRIES } from '$lib/countries';
 
   let accountType: 'p' | 'o' = $state('p');
-  let designation = $state('');
   let firstName = $state('');
   let lastName = $state('');
   let organization = $state('');
@@ -24,7 +23,6 @@
 
     if (!privacyAccepted) { formError = $_('err_privacy_policy'); return; }
     if (!oldEnough) { formError = $_('err_not_old_enough'); return; }
-    if (!designation.trim()) { formError = 'Please enter your designation'; return; }
     if (accountType === 'p') {
       if (!firstName.trim()) { formError = $_('err_first_name_empty'); return; }
       if (!lastName.trim()) { formError = $_('err_last_name_empty'); return; }
@@ -42,7 +40,6 @@
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           type: accountType,
-          designation: designation.trim(),
           firstName: firstName.trim() || undefined,
           lastName: lastName.trim() || undefined,
           organization: organization.trim() || undefined,
@@ -78,25 +75,17 @@
     <!-- Person / Organization toggle -->
     <div id="segemented-controll-people-organization">
       <input id="rad1" type="radio" name="radioBtn" bind:group={accountType} value="p" />
-      <label class="labels" for="rad1">{$_('all_people')}</label>
+      <label class="labels {accountType === 'p' ? 'bg-white/25' : ''}" for="rad1">{$_('all_people')}</label>
       <input id="rad2" type="radio" name="radioBtn" bind:group={accountType} value="o" />
-      <label class="labels" for="rad2">{$_('all_organizations')}</label>
+      <label class="labels {accountType === 'o' ? 'bg-white/25' : ''}" for="rad2">{$_('all_organizations')}</label>
     </div>
 
-    <p id="account-type-label" class="my-1">
-      {accountType === 'p' ? $_('person') : $_('organization')}
-    </p>
 
     {#if accountType === 'o'}
       <p class="text-sm mb-2">{$_('included_organizations')}</p>
     {/if}
 
     <div class="fields">
-      <div class="field half">
-        <label for="designation">Designation</label>
-        <input id="designation" type="text" bind:value={designation} placeholder="e.g. Climate activist" />
-      </div>
-
       {#if accountType === 'p'}
         <div class="field half">
           <label for="firstName">{$_('first_name')}</label>
@@ -186,13 +175,5 @@
     cursor: pointer;
     border-radius: 5px;
   }
-  #bckgrnd {
-    background-color: #e06ab5;
-    position: absolute;
-    left: 0; top: 0;
-    width: 50%; height: 100%;
-    z-index: -1;
-  }
-  #rad1:checked ~ #bckgrnd { transform: translateX(0); transition: transform 0.5s ease-in-out; }
-  #rad2:checked ~ #bckgrnd { transform: translateX(100%); transition: transform 0.5s ease-in-out; }
+  .labels { transition: background-color 0.2s ease; }
 </style>
