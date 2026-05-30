@@ -28,11 +28,11 @@
 
   <!-- Privacy notice -->
   <section>
-    <div style="margin-left:1%">
-      <p style="display:inline;">By continuing you accept the</p>
+    <p style="text-align:center; margin-bottom:0;">
+      By continuing you accept the
       <a href="/privacy_policies" target="_blank">{$_('privacy_policy_0')}</a>
-      <p style="display:inline;">of United-Earth2026</p>
-    </div>
+      of United-Earth2026
+    </p>
   </section>
 
   <!-- Welcome -->
