@@ -1,0 +1,30 @@
+{
+	"name": "unitedearth2026",
+	"private": true,
+	"version": "0.0.1",
+	"type": "module",
+	"scripts": {
+		"dev": "vite dev",
+		"build": "vite build",
+		"preview": "vite preview",
+		"prepare": "svelte-kit sync || echo ''",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
+	},
+	"dependencies": {
+		"@azure/msal-node": "^3.3.0",
+		"nodemailer": "^6.9.0",
+		"postgres": "^3.4.0",
+		"svelte-i18n": "^4.0.0"
+	},
+	"devDependencies": {
+		"@sveltejs/adapter-node": "^5.2.0",
+		"@sveltejs/kit": "^2.57.0",
+		"@sveltejs/vite-plugin-svelte": "^7.0.0",
+		"@types/nodemailer": "^6.4.0",
+		"svelte": "^5.55.2",
+		"svelte-check": "^4.4.6",
+		"typescript": "^6.0.2",
+		"vite": "^8.0.7"
+	}
+}

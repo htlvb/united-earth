@@ -1,0 +1,85 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Database",
+      "type": "shell",
+      "command": "docker compose up db",
+      "group": "build",
+      "isBackground": true,
+      "presentation": {
+        "group": "unitedearth",
+        "reveal": "always",
+        "panel": "dedicated"
+      },
+      "problemMatcher": {
+        "pattern": { "regexp": "^$" },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "Starting",
+          "endsPattern": "database system is ready to accept connections"
+        }
+      }
+    },
+    {
+      "label": "Frontend",
+      "type": "shell",
+      "command": "npm run dev",
+      "group": "build",
+      "isBackground": true,
+      "presentation": {
+        "group": "unitedearth",
+        "reveal": "always",
+        "panel": "dedicated"
+      },
+      "problemMatcher": {
+        "pattern": { "regexp": "^$" },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "vite",
+          "endsPattern": "ready in"
+        }
+      }
+    },
+    {
+      "label": "Backend",
+      "type": "shell",
+      "command": "node build",
+      "group": "build",
+      "isBackground": true,
+      "dependsOn": ["Build"],
+      "presentation": {
+        "group": "unitedearth",
+        "reveal": "always",
+        "panel": "dedicated"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Build",
+      "type": "shell",
+      "command": "npm run build",
+      "group": "build",
+      "presentation": {
+        "group": "unitedearth",
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "All",
+      "dependsOn": ["Database", "Frontend"],
+      "dependsOrder": "parallel",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "group": "unitedearth",
+        "reveal": "always"
+      },
+      "problemMatcher": []
+    }
+  ]
+}
