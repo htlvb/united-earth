@@ -38,7 +38,7 @@
 
   {#if open}
     <div
-      class="absolute top-full left-0 right-0 z-50 grid gap-0.5 rounded border border-white/20 bg-[#1a1a2e] p-1.5 shadow-xl"
+      class="absolute bottom-full left-0 right-0 z-[20000] grid gap-0.5 rounded border border-white/20 bg-[#1a1a2e] p-1.5 shadow-xl mb-1"
       style="grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));"
       transition:slide={{ duration: 250 }}
     >
