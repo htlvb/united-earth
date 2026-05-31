@@ -24,29 +24,42 @@
   })());
 
   let displayedCount = $state(0);
-  let visibleFlags = $state(1); // show first flag immediately
+  let visibleFlags = $state(1);
+  let container: HTMLDivElement;
 
   onMount(() => {
     const duration = 3000;
-    const start = performance.now();
     const target = counts.total;
 
-    function tick(now: number) {
-      const elapsed = now - start;
-      const progress = Math.min(elapsed / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      displayedCount = Math.round(eased * target);
-
-      visibleFlags = Math.max(1, thresholds.filter(t => displayedCount >= t.threshold).length);
-
-      if (progress < 1) requestAnimationFrame(tick);
-      else visibleFlags = thresholds.length;
+    function start() {
+      const t0 = performance.now();
+      function tick(now: number) {
+        const elapsed = now - t0;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        displayedCount = Math.round(eased * target);
+        visibleFlags = Math.max(1, thresholds.filter(t => displayedCount >= t.threshold).length);
+        if (progress < 1) requestAnimationFrame(tick);
+        else visibleFlags = thresholds.length;
+      }
+      requestAnimationFrame(tick);
     }
-    requestAnimationFrame(tick);
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          observer.disconnect();
+          start();
+        }
+      },
+      { threshold: 0.2 }
+    );
+    observer.observe(container);
+    return () => observer.disconnect();
   });
 </script>
 
-<div class="overflow-hidden border border-blue-500 rounded my-2.5">
+<div bind:this={container} class="overflow-hidden border border-blue-500 rounded my-2.5">
   <p class="ml-1.5 inline">{$_('members')}</p>
   <p class="inline">{displayedCount}</p>
   <div class="flex flex-wrap gap-3 p-2">
