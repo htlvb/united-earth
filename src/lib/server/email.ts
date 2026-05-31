@@ -23,7 +23,7 @@ p { margin: 0; padding: 0; }
 </head>
 <body>
 <div class="container">
-  <div class="header">United-Earth2026</div>
+  <div class="header">United-Earth2025</div>
   <div class="body">
     <p style="font-size:24px">Email Verification</p>
     <p style="margin-top:20px">Click the link below to confirm your email and join as a supporter.</p>
@@ -40,7 +40,7 @@ p { margin: 0; padding: 0; }
 }
 
 function getVerificationEmailText(link: string): string {
-	return `United-Earth2026\n\nClick the following link to verify your email and join as a supporter:\n${link}\n\nHTL Vöcklabruck | Bahnhofstrasse 42 | 4840 Vöcklabruck | Austria`;
+	return `United-Earth2025\n\nClick the following link to verify your email and join as a supporter:\n${link}\n\nHTL Vöcklabruck | Bahnhofstrasse 42 | 4840 Vöcklabruck | Austria`;
 }
 
 async function getAccessToken(): Promise<string> {
@@ -77,7 +77,7 @@ export async function sendVerificationEmail(toEmail: string, verificationLink: s
 	await transporter.sendMail({
 		from,
 		to: toEmail,
-		subject: 'United-Earth2026 — Email Verification',
+		subject: 'United-Earth2025 — Email Verification',
 		text: getVerificationEmailText(verificationLink),
 		html: getVerificationEmailHtml(verificationLink)
 	});

@@ -1,7 +1,7 @@
 <script lang="ts">
   import { _ } from 'svelte-i18n';
   import { locale } from 'svelte-i18n';
-  import { COUNTRIES } from '$lib/countries';
+  import CountrySelector from '$lib/components/CountrySelector.svelte';
 
   let accountType: 'p' | 'o' = $state('p');
   let firstName = $state('');
@@ -10,7 +10,7 @@
   let website = $state('');
   let country = $state('');
   let email = $state('');
-  let newsletter = $state(true);
+  let newsletter = $state(false);
   let privacyAccepted = $state(false);
   let oldEnough = $state(false);
 
@@ -108,12 +108,7 @@
 
       <div class="field half">
         <label for="country">{$_('country')}</label>
-        <select id="country" bind:value={country}>
-          <option value="" disabled selected>{$_('select_country')}</option>
-          {#each COUNTRIES as c}
-            <option value={c.code}>{c.name}</option>
-          {/each}
-        </select>
+        <CountrySelector bind:value={country} />
       </div>
 
       <div class="field half">
@@ -147,7 +142,7 @@
     <ul class="actions">
       <li>
         <button type="submit" class="button_theme primary" disabled={loading}>
-          {loading ? $_('loading') : $_('create_account')}
+          {loading ? $_('loading') : $_('get_involved')}
         </button>
       </li>
     </ul>

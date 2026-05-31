@@ -4,7 +4,7 @@ import type { LatestMember, RegistrationData } from '$lib/types';
 export async function getMemberCounts(): Promise<{ total: number; byCountry: Record<string, number> }> {
 	const sql = getDb();
 	const rows = await sql<{ country: string; count: string }[]>`
-		SELECT country, COUNT(*)::text AS count FROM supporters GROUP BY country
+		SELECT TRIM(country) AS country, COUNT(*)::text AS count FROM supporters GROUP BY country
 	`;
 	const byCountry: Record<string, number> = {};
 	let total = 0;
@@ -17,15 +17,17 @@ export async function getMemberCounts(): Promise<{ total: number; byCountry: Rec
 
 export async function getLatestMembers(limit = 12): Promise<LatestMember[]> {
 	const sql = getDb();
-	const rows = await sql<{ name: string; country: string }[]>`
+	return sql<LatestMember[]>`
 		SELECT
-			COALESCE(first_name || ' ' || last_name, organization) AS name,
-			country
+			COALESCE(
+				organization,
+				first_name || CASE WHEN last_name IS NOT NULL THEN ' ' || LEFT(last_name, 1) || '.' ELSE '' END
+			) AS name,
+			TRIM(country) AS country
 		FROM supporters
 		ORDER BY verified_at DESC
 		LIMIT ${limit}
 	`;
-	return rows;
 }
 
 export async function createPendingRegistration(token: string, data: RegistrationData): Promise<void> {

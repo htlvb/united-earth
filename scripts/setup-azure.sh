@@ -7,10 +7,10 @@
 
 set -euo pipefail
 
-APP_NAME="UnitedEarth2026"
+APP_NAME="UnitedEarth2025"
 MAIL_FROM="${MAIL_FROM:-united-earth2025@htlvb.at}"
 
-echo "=== United-Earth2026 Azure App Registration Setup ==="
+echo "=== United-Earth2025 Azure App Registration Setup ==="
 echo ""
 
 # Get tenant ID

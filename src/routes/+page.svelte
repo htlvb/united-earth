@@ -16,7 +16,7 @@
         <li><a href="#welcome">{$_('tab1')}</a></li>
         <li><a href="#whatDoWeStandFor">{$_('tab2')}</a></li>
         <li><a href="#whatIsNecessary">{$_('tab3')}</a></li>
-        <li><a href="/current_status_climate">{$_('current_status_climate')}</a></li>
+        <li><a href="/2_current_status_climate.pdf" target="_blank">{$_('current_status_climate')}</a></li>
         <li><a href="#becomeAMember">{$_('tab4')}</a></li>
       </ul>
     </nav>
@@ -31,7 +31,7 @@
     <p class="text-center !mb-0">
       By continuing you accept the
       <a href="/privacy_policies" target="_blank">{$_('privacy_policy_0')}</a>
-      of United-Earth2026
+      of United-Earth2025
     </p>
   </section>
 
@@ -45,13 +45,13 @@
       <!-- Large screen: logos left and right of title -->
       <div class="hidden md:flex flex-row items-center my-5">
         <img class="flex-1 max-h-36 object-contain" src="/umweltabzeichen.png" alt="Logo" />
-        <h1 class="grow-[5] text-center m-0">United-Earth2026</h1>
+        <h1 class="grow-[5] text-center m-0">United-Earth2025</h1>
         <img class="flex-1 max-h-36 object-contain" src="/Logo.png" alt="Logo" />
       </div>
 
       <!-- Small screen: title on top, logos side by side below -->
       <div class="flex md:hidden flex-col items-center my-5">
-        <h1 class="text-center m-0">United-Earth2026</h1>
+        <h1 class="text-center m-0">United-Earth2025</h1>
         <div class="flex flex-row justify-center items-center">
           <img class="w-[55%]" src="/umweltabzeichen.png" alt="Logo" />
           <img class="w-[35%]" src="/Logo.png" alt="Logo" />
@@ -67,9 +67,8 @@
       <p class="mb-0 text-base">{$_('united_earth_is_7')}</p>
       <p class="text-base">{$_('united_earth_is_8')}</p>
 
-      <div class="flex flex-wrap gap-2 my-2">
-        <a class="button_theme half flex-1 block mb-2" href="#becomeAMember">{$_('get_involved_people')}</a>
-        <a class="button_theme half flex-1 block mb-2" href="#becomeAMember">{$_('get_involved_organizations')}</a>
+      <div class="!my-2 !mb-6">
+        <a class="button_theme fit" href="#becomeAMember">{$_('get_involved')}</a>
       </div>
 
       <h3>Latest members</h3>
@@ -83,21 +82,50 @@
   <section id="weSaveOurPlanet" class="wrapper style3 fade-up">
     <div class="inner">
       <section id="whatDoWeStandFor">
-        <h2 class="ml-[2%] mt-[35px]">{$_('tab2')}</h2>
-        <p class="ml-[8%] mb-0">{$_('about_us_2')}</p>
-        <p class="ml-[8%] mb-0">{$_('about_us_3')}</p>
-        <p class="ml-[8%] mb-0">{$_('about_us_4')}</p>
-        <p class="ml-[8%] mb-0">{$_('about_us_5')}</p>
+        <h1>{$_('ws_page_title')}</h1>
+        <h2>{$_('tab2')}</h2>
+
+        <h4>{$_('ws_saving_earth_h')}</h4>
+        <p>{$_('ws_saving_earth_text')}</p>
+
+        <h4>{$_('ws_peace_h')}</h4>
+        <p>{$_('ws_peace_text')}</p>
+
+        <h4>{$_('ws_forests_h')}</h4>
+        <p>{$_('ws_forests_text')}</p>
+
+        <h4>{$_('ws_science_h')}</h4>
+        <p>{$_('ws_science_text')}</p>
       </section>
 
       <section id="whatIsNecessary">
-        <h2 class="ml-[2%] mt-[35px]">{$_('tab3')}</h2>
-        <p class="ml-[8%] mb-0">{$_('about_us_6')}</p>
-        <p class="ml-[8%] mb-0"><strong>{$_('about_us_7')}</strong></p>
-        <ul class="actions mt-4">
-          <li><a href="/current_status_climate" class="button_theme">{$_('current_status_climate')}</a></li>
-          <li><a href="/action_plan" class="button_theme">{$_('action_plan')}</a></li>
+        <h2>{$_('tab3')}</h2>
+
+        <h4>{$_('ws_greenhouse_h')}</h4>
+        <p>{$_('ws_greenhouse_text')}<br/><a href={$_('ws_greenhouse_url')} target="_blank" rel="noopener">{$_('ws_greenhouse_url')}</a></p>
+
+        <h4>{$_('ws_co2_h')}</h4>
+        <p>{$_('ws_co2_text')}<br/><a href={$_('ws_co2_url')} target="_blank" rel="noopener">{$_('ws_co2_url')}</a></p>
+
+        <h4>{$_('ws_animals_h')}</h4>
+        <p>{$_('ws_animals_text')}<br/><a href={$_('ws_animals_url')} target="_blank" rel="noopener">{$_('ws_animals_url')}</a></p>
+
+        <h4>{$_('ws_preparing_h')}</h4>
+        <p>{$_('ws_preparing_text')}<br/><a href={$_('ws_preparing_url')} target="_blank" rel="noopener">{$_('ws_preparing_url')}</a></p>
+
+        <h4>{$_('ws_awareness_h')}</h4>
+        <p>{$_('ws_awareness_text')}<br/><a href={$_('ws_awareness_url')} target="_blank" rel="noopener">{$_('ws_awareness_url')}</a></p>
+
+        <ul class="actions" style="margin-top:1.5em;">
+          <li><a href="/2_current_status_climate.pdf" target="_blank" class="button_theme">{$_('current_status_climate')}</a></li>
         </ul>
+
+        <div class="text-center mt-8">
+          <h3>{$_('ws_lets_start')}</h3>
+          <h3>{$_('ws_only_with_help')}</h3>
+          <h3>{$_('ws_together')}</h3>
+          <h3>{$_('ws_page_title')}</h3>
+        </div>
       </section>
     </div>
   </section>

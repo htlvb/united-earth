@@ -16,7 +16,7 @@
         {#each AVAILABLE_LANGS as lang}
           <li>
             <a
-              href="/pdfs/privacy_policy/DSV_{lang}.pdf"
+              href="/DSV_{lang}.pdf"
               target="_blank"
               class="button_theme {lang === displayLang ? 'primary' : ''}"
             >

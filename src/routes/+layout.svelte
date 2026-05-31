@@ -17,7 +17,7 @@
 </script>
 
 <svelte:head>
-  <title>United-Earth2026</title>
+  <title>United-Earth2025</title>
   <meta name="description" content="We have to connect with each other to show how powerful our movement is." />
 </svelte:head>
 
