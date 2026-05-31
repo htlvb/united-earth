@@ -54,8 +54,8 @@ SECRET_JSON=$(az ad app credential reset \
   --id "$APP_ID" \
   --append \
   --years 2 \
-  --query "{secretText: secretText}" -o json)
-CLIENT_SECRET=$(echo "$SECRET_JSON" | python3 -c "import sys,json; print(json.load(sys.stdin)['secretText'])")
+  -o json)
+CLIENT_SECRET=$(echo "$SECRET_JSON" | python3 -c "import sys,json; print(json.load(sys.stdin)['password'])")
 
 echo ""
 echo "=== Admin Consent Required ==="

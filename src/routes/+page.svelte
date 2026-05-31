@@ -137,18 +137,6 @@
       <p>{$_('save_the_earth')}</p>
       <p>{$_('error_free')}</p>
 
-      {#if data.success}
-        <div class="rounded bg-[#5e42a6] px-4 py-3 mb-4 text-white">
-          {$_('mes_email_sent')}
-        </div>
-      {/if}
-
-      {#if data.error === 'invalid_token'}
-        <div class="rounded bg-red-700 px-4 py-3 mb-4 text-white">
-          Verification link is invalid or has expired.
-        </div>
-      {/if}
-
       <RegistrationForm />
     </div>
   </section>
