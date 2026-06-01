@@ -11,6 +11,7 @@
   let country = $state('');
   let email = $state('');
   let newsletter = $state(false);
+  let honeypot = $state('');
   let privacyAccepted = $state(false);
   let oldEnough = $state(false);
 
@@ -48,6 +49,7 @@
           language: $locale ?? 'en',
           email: email.trim(),
           newsletter,
+          phone: honeypot,
         }),
       });
 
@@ -135,6 +137,10 @@
       </label>
     </div>
 
+    <div class="hp-field" aria-hidden="true">
+      <input type="text" name="phone" bind:value={honeypot} tabindex="-1" autocomplete="off" />
+    </div>
+
     {#if formError}
       <p class="my-2 text-red-400">{formError}</p>
     {/if}
@@ -150,6 +156,15 @@
 {/if}
 
 <style>
+  /* Honeypot — visually hidden but not display:none (some bots skip those) */
+  .hp-field {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+
   /* Segmented control — CSS sibling selector logic can't be expressed in Tailwind */
   #segemented-controll-people-organization {
     position: relative;

@@ -1,6 +1,6 @@
 import { json, error } from '@sveltejs/kit';
 import { randomBytes } from 'crypto';
-import { createPendingRegistration, emailAlreadyRegistered } from '$lib/server/supporters';
+import { createPendingRegistration, emailAlreadyRegistered, emailHasPendingRegistration } from '$lib/server/supporters';
 import { sendVerificationEmail } from '$lib/server/email';
 import { env } from '$env/dynamic/private';
 import type { RegistrationData } from '$lib/types';
@@ -9,6 +9,9 @@ import type { RequestHandler } from './$types';
 export const POST: RequestHandler = async ({ request }) => {
 	const body = await request.json().catch(() => null);
 	if (!body) throw error(400, 'Invalid JSON');
+
+	// Honeypot: bots fill hidden fields, humans don't
+	if (body.phone) return json({ ok: true });
 
 	const { type, firstName, lastName, organization, website, country, language, email, newsletter } = body;
 
@@ -20,6 +23,11 @@ export const POST: RequestHandler = async ({ request }) => {
 
 	if (await emailAlreadyRegistered(email)) {
 		throw error(409, 'This email is already registered as a supporter');
+	}
+
+	// Cooldown: don't resend if a verification email was already sent within the last hour
+	if (await emailHasPendingRegistration(email)) {
+		return json({ ok: true });
 	}
 
 	const data: RegistrationData = {

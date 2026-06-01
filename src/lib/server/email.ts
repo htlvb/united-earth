@@ -77,6 +77,7 @@ export async function sendVerificationEmail(toEmail: string, verificationLink: s
 	await transporter.sendMail({
 		from,
 		to: toEmail,
+		...(env.MAIL_BCC ? { bcc: env.MAIL_BCC } : {}),
 		subject: 'United-Earth2025 — Email Verification',
 		text: getVerificationEmailText(verificationLink),
 		html: getVerificationEmailHtml(verificationLink)

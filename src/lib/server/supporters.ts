@@ -69,3 +69,14 @@ export async function emailAlreadyRegistered(email: string): Promise<boolean> {
 	const rows = await sql`SELECT 1 FROM supporters WHERE email = ${email} LIMIT 1`;
 	return rows.length > 0;
 }
+
+export async function emailHasPendingRegistration(email: string): Promise<boolean> {
+	const sql = getDb();
+	const rows = await sql`
+		SELECT 1 FROM pending_registrations
+		WHERE data->>'email' = ${email}
+		  AND created_at > NOW() - INTERVAL '1 hour'
+		LIMIT 1
+	`;
+	return rows.length > 0;
+}
