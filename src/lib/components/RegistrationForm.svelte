@@ -10,7 +10,6 @@
   let website = $state('');
   let country = $state('');
   let email = $state('');
-  let newsletter = $state(false);
   let honeypot = $state('');
   let privacyAccepted = $state(false);
   let oldEnough = $state(false);
@@ -48,7 +47,6 @@
           country,
           language: $locale ?? 'en',
           email: email.trim(),
-          newsletter,
           phone: honeypot,
         }),
       });
@@ -117,11 +115,6 @@
         <label for="email">{$_('email')}</label>
         <input id="email" type="email" bind:value={email} />
       </div>
-    </div>
-
-    <div class="field">
-      <input id="email_newsletter" type="checkbox" bind:checked={newsletter} />
-      <label for="email_newsletter">{$_('email_newsletter')}</label>
     </div>
 
     <div class="field">

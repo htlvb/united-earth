@@ -7,7 +7,6 @@ export interface RegistrationData {
 	country: string;
 	language: string;
 	email: string;
-	newsletter: boolean;
 }
 
 export interface MemberCounts {

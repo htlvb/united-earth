@@ -13,7 +13,7 @@ export const POST: RequestHandler = async ({ request }) => {
 	// Honeypot: bots fill hidden fields, humans don't
 	if (body.phone) return json({ ok: true });
 
-	const { type, firstName, lastName, organization, website, country, language, email, newsletter } = body;
+	const { type, firstName, lastName, organization, website, country, language, email } = body;
 
 	if (!type || !['p', 'o'].includes(type)) throw error(400, 'Invalid type');
 	if (!country?.trim() || country.length > 3) throw error(400, 'Invalid country');
@@ -39,7 +39,6 @@ export const POST: RequestHandler = async ({ request }) => {
 		country: country.trim().toLowerCase(),
 		language: language?.trim() || 'en',
 		email: email.trim().toLowerCase(),
-		newsletter: Boolean(newsletter)
 	};
 
 	const token = randomBytes(32).toString('hex');

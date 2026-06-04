@@ -49,12 +49,12 @@ export async function confirmRegistration(token: string): Promise<RegistrationDa
 	const data = rows[0].data;
 
 	await sql`
-		INSERT INTO supporters (type, first_name, last_name, organization, website, country, language, email, newsletter)
+		INSERT INTO supporters (type, first_name, last_name, organization, website, country, language, email)
 		VALUES (
 			${data.type},
 			${data.firstName ?? null}, ${data.lastName ?? null},
 			${data.organization ?? null}, ${data.website ?? null},
-			${data.country}, ${data.language}, ${data.email}, ${data.newsletter}
+			${data.country}, ${data.language}, ${data.email}
 		)
 		ON CONFLICT (email) DO NOTHING
 	`;
