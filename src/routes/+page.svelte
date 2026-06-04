@@ -43,18 +43,20 @@
       </div>
 
       <!-- Large screen: logos left and right of title -->
-      <div class="hidden md:flex flex-row items-center my-5">
+      <div class="hidden lg:flex flex-row items-center my-5">
+        <img class="flex-none max-h-20 object-contain mr-4" src="/htlvb.svg" alt="HTLVB" />
         <img class="flex-1 max-h-36 object-contain" src="/umweltabzeichen.png" alt="Logo" />
         <h1 class="grow-[5] text-center m-0">United-Earth2025</h1>
         <img class="flex-1 max-h-36 object-contain" src="/Logo.png" alt="Logo" />
       </div>
 
       <!-- Small screen: title on top, logos side by side below -->
-      <div class="flex md:hidden flex-col items-center my-5">
+      <div class="flex lg:hidden flex-col items-center my-5">
         <h1 class="text-center m-0">United-Earth2025</h1>
         <div class="flex flex-row justify-center items-center">
-          <img class="w-[55%]" src="/umweltabzeichen.png" alt="Logo" />
-          <img class="w-[35%]" src="/Logo.png" alt="Logo" />
+          <img class="w-[35%]" src="/htlvb.svg" alt="HTLVB" />
+          <img class="w-[30%]" src="/umweltabzeichen.png" alt="Logo" />
+          <img class="w-[30%]" src="/Logo.png" alt="Logo" />
         </div>
       </div>
 
