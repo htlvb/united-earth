@@ -97,7 +97,7 @@
   "ws_science_text": "Biz odamlar va sayyoramiz uchun ishlaydigan fan va tadqiqotlar tarafdorimiz. Texnologiyalarda, tabiiy fanlarda, ijtimoiy va huquqiy fanlarda, qishloq va o'rmon xo'jaligida, tibbiyotda va umuman tadqiqot va fanda. Faqat har kimning sadoqati va hamkorligi bilan biz qaytarib bo'lmaydigan, tez 2 darajadan yuqori qizdirishning oldini olamiz.",
   "ws_greenhouse_h": "Issiqxona gazlarining kamayishi",
   "ws_greenhouse_text": "Atmosferaga odamlar chiqarishimiz kerak bo'lgan CO2 byudjeti deyarli qolmagan. Biroq, global issiqxona gazlari chiqindilari ko'paymoqda va atmosferada issiqxona gazlarining kontsentratsiyasi sezilarli darajada oshmoqda. Quyidagi issiqxona gazlari birinchi navbatda global isish uchun javobgardir. Uglerod oksidi CO2, metan CH4 - 30, azot oksidi N2O - 300, HFC - 300000 martagacha)",
-  "ws_greenhouse_url": "https://scripps.ucsd.edu/programs/keelingcurve/",
+  "ws_greenhouse_url": "https://keelingcurve.ucsd.edu/",
   "ws_co2_h": "Issiqxona gazlarini atmosferadan chiqaring",
   "ws_co2_text": "Atmosferada issiqxona gazlari kontsentratsiyasi shu qadar yuqoriki, o'rtacha harorat 1,5 ° C va undan yuqori harorat yuzaga keladi. Shu bilan birga, domino effektining paydo bo'lishining oldini olish kerak. Shunday qilib, iloji boricha ko'proq issiqxona gazlarini atmosferadan chiqarishimiz kerak. Daraxtlar ekish, yashil maydonlar yaratish va boshqalar.",
   "ws_co2_url": "https://ru.wikipedia.org/wiki/Критические_факторы_изменения_климата",
