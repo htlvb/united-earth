@@ -7,6 +7,7 @@
     <div class="inner" style="word-wrap:break-word;">
       <h2>{$_('sources')}</h2>
       <ol>
+        <li><a href="https://climate.copernicus.eu/" target="_blank" rel="noopener">https://climate.copernicus.eu/</a> [04.06.2026]</li>
         <li><a href="https://ec.europa.eu/clima/citizens/eu_de" target="_blank" rel="noopener">https://ec.europa.eu/clima/citizens/eu_de</a> [06.07.2021]</li>
         <li><a href="https://de.serlo.org/nachhaltigkeit/globaler-wandel/klima/treibhauseffekt" target="_blank" rel="noopener">https://de.serlo.org/nachhaltigkeit/</a> [06.07.2021]</li>
         <li><a href="https://www.oekom.de" target="_blank" rel="noopener">www.oekom.de</a> [06.07.2021]</li>
